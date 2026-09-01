@@ -1,0 +1,280 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+}
+
+.pet-rank-card {
+  width: 100%;
+  max-width: 960px;
+  background-color: #1a1f2e;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+}
+
+/* 포지션 필터 탭 */
+.pet-rank-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pet-rank-tab {
+  border: none;
+  background-color: transparent;
+  color: #9aa3b2;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pet-rank-tab:hover {
+  color: #e6e9f0;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.pet-rank-tab.active {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* 테이블 */
+.pet-rank-table-wrapper {
+  overflow-x: auto;
+}
+
+.pet-rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+}
+
+.pet-rank-table thead th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7c8496;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.pet-rank-table thead th.col-rank {
+  width: 64px;
+  text-align: center;
+}
+
+.pet-rank-table thead th.col-rate {
+  width: 220px;
+}
+
+.pet-rank-table thead th.col-position {
+  width: 120px;
+}
+
+.pet-rank-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background-color 0.2s ease;
+}
+
+.pet-rank-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.pet-rank-table tbody td {
+  padding: 12px;
+  color: #e6e9f0;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.col-rank {
+  text-align: center;
+}
+
+/* 순위 뱃지 */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  font-weight: 700;
+  color: #9aa3b2;
+}
+
+.rank-badge.rank-1 {
+  color: #ffd166;
+}
+
+.rank-badge.rank-2 {
+  color: #cfd8e3;
+}
+
+.rank-badge.rank-3 {
+  color: #e0a872;
+}
+
+/* 펫 이름 */
+.pet-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pet-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.pet-name-text {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 사용률 바 */
+.usage-rate-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.usage-rate-bar-track {
+  flex: 1;
+  min-width: 60px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.usage-rate-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f5a623, #f76b1c);
+}
+
+.usage-rate-value {
+  flex-shrink: 0;
+  min-width: 52px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #e6e9f0;
+}
+
+/* 포지션 뱃지 */
+.position-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.position-badge.position-melee {
+  background-color: rgba(239, 68, 68, 0.16);
+  color: #f87171;
+}
+
+.position-badge.position-ranged {
+  background-color: rgba(167, 139, 250, 0.18);
+  color: #c4b5fd;
+}
+
+.position-badge.position-defense {
+  background-color: rgba(56, 189, 248, 0.16);
+  color: #7dd3fc;
+}
+
+.position-badge.position-support {
+  background-color: rgba(52, 211, 153, 0.16);
+  color: #6ee7b7;
+}
+
+.empty-row {
+  text-align: center;
+  padding: 32px 12px;
+  color: #7c8496;
+}
+
+/* 반응형: 좁은 화면에서는 표를 카드형 리스트로 전환 */
+@media (max-width: 560px) {
+  .pet-rank-card {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .pet-rank-table-wrapper {
+    overflow-x: visible;
+  }
+
+  .pet-rank-table {
+    min-width: 0;
+  }
+
+  .pet-rank-table thead {
+    display: none;
+  }
+
+  .pet-rank-table tbody tr {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "rank name"
+      "rate rate"
+      "position position";
+    row-gap: 8px;
+    padding: 14px 4px;
+  }
+
+  .pet-rank-table tbody td {
+    padding: 0;
+  }
+
+  .col-rank {
+    grid-area: rank;
+    display: flex;
+    align-items: center;
+    padding-right: 10px !important;
+  }
+
+  .col-name {
+    grid-area: name;
+  }
+
+  .col-rate {
+    grid-area: rate;
+  }
+
+  .col-position {
+    grid-area: position;
+  }
+
+  .col-rate::before,
+  .col-position::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #7c8496;
+    margin-bottom: 4px;
+  }
+}
