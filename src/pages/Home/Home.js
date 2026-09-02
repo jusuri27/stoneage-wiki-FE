@@ -9,12 +9,7 @@ const POSITION_SLUG = {
   지원형: "support",
 };
 
-const AVATAR_COLORS = ["#f97316", "#38bdf8", "#a78bfa", "#34d399", "#f472b6", "#fbbf24"];
-
-const getAvatarColor = (name) => {
-  const hash = Array.from(name).reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  return AVATAR_COLORS[hash % AVATAR_COLORS.length];
-};
+const DEFAULT_PET_IMAGE = "/images/pets/default.png";
 
 const Home = () => {
   const [activePosition, setActivePosition] = useState("전체");
@@ -67,12 +62,15 @@ const Home = () => {
                     </td>
                     <td className="col-name" data-label="펫이름">
                       <div className="pet-name-cell">
-                        <span
+                        <img
                           className="pet-avatar"
-                          style={{ backgroundColor: getAvatarColor(pet.name) }}
-                        >
-                          {pet.name.charAt(0)}
-                        </span>
+                          src={`/images/pets/${pet.name}.png`}
+                          alt={pet.name}
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = DEFAULT_PET_IMAGE;
+                          }}
+                        />
                         <span className="pet-name-text">{pet.name}</span>
                       </div>
                     </td>
