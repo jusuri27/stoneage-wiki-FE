@@ -226,51 +226,88 @@
     min-width: 0;
   }
 
+  .pet-rank-table thead tr {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 4px 8px;
+  }
+
+  .pet-rank-table thead th {
+    padding: 0;
+    border-bottom: none;
+    font-size: 11px;
+  }
+
   .pet-rank-table thead {
-    display: none;
+    display: table-header-group;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .pet-rank-table tbody tr {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "rank name"
-      "rate rate"
-      "position position";
-    row-gap: 8px;
-    padding: 14px 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 4px;
   }
 
   .pet-rank-table tbody td {
     padding: 0;
   }
 
+  /* 순번/사용률/포지션은 고정폭, 이름만 남는 공간을 흡수 → 막대바 폭이 행마다 흔들리지 않음 */
   .col-rank {
-    grid-area: rank;
+    flex: 0 0 30px;
     display: flex;
     align-items: center;
-    padding-right: 10px !important;
   }
 
   .col-name {
-    grid-area: name;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .pet-name-cell {
+    gap: 6px;
+  }
+
+  .pet-avatar {
+    width: 26px;
+    height: 26px;
+  }
+
+  .pet-name-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .col-rate {
-    grid-area: rate;
+    flex: 0 0 108px;
+  }
+
+  .usage-rate-cell {
+    gap: 6px;
+  }
+
+  .usage-rate-bar-track {
+    min-width: 30px;
+  }
+
+  .usage-rate-value {
+    min-width: 44px;
+    font-size: 12px;
   }
 
   .col-position {
-    grid-area: position;
+    flex: 0 0 64px;
   }
 
-  .col-rate::before,
-  .col-position::before {
-    content: attr(data-label);
-    display: block;
+  .position-badge {
+    padding: 3px 8px;
     font-size: 11px;
-    font-weight: 600;
-    color: #7c8496;
-    margin-bottom: 4px;
   }
 }
